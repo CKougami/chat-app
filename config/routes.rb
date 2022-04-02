@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   # usersコントローラーに更新フォーム（edit）とリソース更新（update）のアクションのみ設定
   resources :users, only: [:edit, :update]
+  resources :rooms, only: [:new, :create]
 
 end
