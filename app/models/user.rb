@@ -6,7 +6,9 @@ class User < ApplicationRecord
 
   # 入力チェック（:nameカラムが「空である」場合はDBに保存しない）
   validates :name, presence: true
-  #README!の記述どおりにアソシエーションを記述
+  
+  # READMEのDB設計を基に記述
   has_many :room_users
   has_many :rooms, through: :room_users
+  has_many :messages  #1人のユーザーは、複数のメッセージを送信できます。
 end
