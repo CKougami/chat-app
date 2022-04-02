@@ -1,7 +1,7 @@
 <div class="chat-header">
   <div class="left-hreader">
     <div class="header-title">
-      hogefuga
+      <%= @room.name %> 
     </div>
   </div>
 
@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<%# メッセージ　1　============================= %>
+<%# メッセージ1============================= %>
 <div class="messages">
   <div class="message">
     <div class="upper-message">
@@ -47,7 +47,7 @@
   </div>
 </div>
 <%# 入力フォーム ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝%>
-<div class="form">
+<%# <div class="form">
   <div class="form-input">
     <input class="form-message" placeholder= "type a message">
     <label class="form-image">
@@ -56,4 +56,16 @@
     </label>
   </div>
   <input class="form-submit" type="submit" value="送信">
-</div>
+</div> %>
+
+<%# ▼ルーティングでroomsとmessagesをネストで入れ子設定しているため、ここでも入れ子構造にする %>
+<%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
+  <div class="form-input">
+    <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
+    <label class="form-image">
+      <span class="image-file">画像</span>
+      <%= f.file_field :image, class: 'hidden' %>
+    </label>
+  </div>
+  <%= f.submit '送信', class: 'form-submit' %>
+<% end %>
