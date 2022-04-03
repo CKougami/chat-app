@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'messages/index'
-  # root to: "messages#index"  #ルートパスを設定（messages/index.html.erb）
   root to: "rooms#index"  #ルートパスを設定（rooms/index.html.erb）
 
-  # usersコントローラーに更新フォーム（edit）とリソース更新（update）のアクションのみ設定
   resources :users, only: [:edit, :update]
-  resources :rooms, only: [:new, :create]
-
+  resources :rooms, only: [:new, :create, :destroy] do
+    resources :messages, only: [:index, :create]
+  end
 end
+
+  # usersコントローラーのアクションを指定
+  # roomsコントローラーのアクションを指定
+  # messagesコントローラーのアクションを指定（ネストにすることで「rooms」に属する「message」となる）

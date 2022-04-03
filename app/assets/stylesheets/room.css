@@ -4,25 +4,21 @@ h1 {
   font-weight: bold;
   text-align: center;
 }
-
 h2 {
   margin-bottom: 10px;
   color: #f05050;
   font-size: 14px;
 }
-
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 li {
   margin: 0;
   padding: 0;
   font-size: 13px;
 }
-
 .chat-room-form {
   width: 980px;
   margin: 60px auto;
@@ -78,14 +74,20 @@ li {
   float: right;
   width: 70%;
 }
-
 select {
   width: 500px;
   height: 50px;
 }
-
 .top-header {
   background-color: #434a54;
   height: 80px;
   width: 100%;
+}
+
+
+/* バリデーションエラー発生時に生成されるdiv要素を非表示にする */
+/* displayプロパティに、contentsを指定することで、その要素のボックスだけを非表示にする*/
+/* もしここでnoneを指定すると、子要素も合わせて非表示になり、フォームの表示がまた崩れてしまうので注意 */
+.field_with_errors {
+  display: contents;
 }
