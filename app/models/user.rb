@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   # 入力チェック（:nameカラムが「空である」場合はDBに保存しない）
   validates :name, presence: true
+  # nameだけはdeviseのバリデーションの標準設定にふくまれていないため別途設定している
+   
   
   # READMEのDB設計を基に記述
   has_many :room_users
